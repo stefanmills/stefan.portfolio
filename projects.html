@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Projects — Stefan Ameyaw Mills</title>
+<meta name="description" content="Applied ML, deep learning, SQL, and BI projects — filterable, every repo linked." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#F7F7F4;--card:#FFFFFF;--ink:#131A24;--ink-2:#39465A;--steel:#69788C;
+  --line:#E4E6E9;--fit:#C1362B;--fit-ink:#8F241C;--fit-soft:#F9ECEA;--gold:#B98A2F;
+  --grid:rgba(255,255,255,.05);--r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.68;font-size:16.5px;-webkit-font-smoothing:antialiased}
+::selection{background:var(--fit);color:#fff}
+h1,h2,h3{font-family:'STIX Two Text',Georgia,serif;line-height:1.18;font-weight:600}
+a{color:var(--fit-ink);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 26px}
+:focus-visible{outline:2px solid var(--fit);outline-offset:3px;border-radius:4px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+nav{position:sticky;top:0;z-index:60;background:rgba(247,247,244,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+#bar{position:absolute;left:0;bottom:-1px;height:2px;background:var(--fit);width:0%}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{font-family:'STIX Two Text',serif;font-weight:700;font-size:1.08rem;color:var(--ink)}
+.brand:hover{text-decoration:none}
+.brand em{color:var(--fit);font-style:normal}
+nav ul{display:flex;gap:4px;list-style:none;align-items:center}
+nav ul a{color:var(--ink-2);font-size:.9rem;font-weight:500;padding:7px 12px;border-radius:8px}
+nav ul a:hover{background:#ECECE7;text-decoration:none;color:var(--ink)}
+nav ul a.on{background:var(--ink);color:#fff}
+.nav-cv{border:1px solid var(--fit);color:var(--fit-ink)!important;margin-left:8px}
+.nav-cv:hover{background:var(--fit)!important;color:#fff!important}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:7px 12px;font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--ink-2);cursor:pointer}
+
+/* page banner (interior pages) */
+.banner{background:var(--ink);color:#EAEFF5;position:relative;overflow:hidden}
+.banner::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:46px 46px}
+.banner .wrap{position:relative;padding:56px 26px 50px}
+.banner .crumb{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#93A5BB;margin-bottom:12px;display:flex;gap:10px;align-items:center}
+.banner .crumb::before{content:"";width:26px;height:1px;background:var(--fit)}
+.banner h1{font-size:clamp(2rem,4.2vw,2.9rem);color:#fff;letter-spacing:-.015em}
+.banner h1 .n{font-style:italic;color:#F0B7B1;font-weight:400;margin-right:14px}
+.banner p.tag{font-family:'STIX Two Text',serif;font-style:italic;color:#9FB0C4;font-size:1.08rem;margin-top:10px;max-width:40rem}
+.pagenav{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);margin-top:70px;padding:26px 0 0}
+.pagenav a{font-family:'IBM Plex Mono',monospace;font-size:.8rem}
+
+/* hero (home) */
+header.hero{background:var(--ink);color:#EAEFF5;position:relative;overflow:hidden}
+header.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:46px 46px}
+.hero-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:86px 0 78px}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:#93A5BB;margin-bottom:20px;display:flex;gap:10px;align-items:center}
+.kicker::before{content:"";width:26px;height:1px;background:var(--fit)}
+.hero h1{font-size:clamp(2.2rem,4.7vw,3.45rem);letter-spacing:-.015em;color:#FFF;margin-bottom:8px}
+.hero h1 em{font-style:italic;color:#F0B7B1}
+.hero .sub{font-family:'STIX Two Text',serif;font-style:italic;color:#9FB0C4;font-size:1.15rem;margin-bottom:24px}
+.abstract{border-left:2px solid #33445A;padding-left:20px;margin-bottom:16px}
+.abstract .lab{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#7E90A7;display:block;margin-bottom:6px}
+.abstract p{color:#BCC9D9;font-size:.99rem;max-width:33rem}
+.kw{font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:#7E90A7;margin-bottom:30px}
+.kw b{color:#C7D3E1;font-weight:500}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:600;font-size:.94rem;transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-primary{background:var(--fit);color:#fff;box-shadow:0 8px 22px rgba(193,54,43,.35)}
+.btn-primary:hover{background:#D0463B}
+.btn-ghost{border:1px solid #3B4D63;color:#DBE4EF}
+.btn-ghost:hover{border-color:#6C819B}
+.figure{position:relative;background:rgba(255,255,255,.025);border:1px solid #2A3A50;border-radius:var(--r);padding:18px 18px 14px}
+.figure svg{width:100%;height:auto;display:block}
+.figbar{display:flex;align-items:center;gap:14px;margin-top:12px}
+.figbar label{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:#93A5BB;white-space:nowrap}
+.figbar output{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:#F0B7B1;min-width:74px;text-align:right}
+input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:3px;background:#3B4D63;border-radius:99px;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;border-radius:50%;background:var(--fit);border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--fit);border:2px solid #fff}
+.figcap{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:#7E90A7;margin-top:10px}
+.figcap b{color:#C7D3E1;font-weight:500}
+
+.stats{background:var(--card);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);padding:0 26px}
+.stat{padding:26px 10px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat .num{font-family:'STIX Two Text',serif;font-size:1.75rem;font-weight:700}
+.stat .num span{color:var(--fit)}
+.stat .lbl{font-size:.79rem;color:var(--steel);font-family:'IBM Plex Mono',monospace}
+
+section{padding:74px 0 26px}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:14px}
+.sec-num{font-family:'STIX Two Text',serif;font-style:italic;font-size:1.15rem;color:var(--fit)}
+.sec-head h2{font-size:2rem;letter-spacing:-.01em}
+.sec-head .rule{flex:1;height:1px;background:var(--line)}
+.sec-sub{font-family:'STIX Two Text',serif;font-style:italic;color:var(--steel);margin-bottom:38px;font-size:1.02rem}
+
+/* table of contents (home) */
+.toc{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.toc a.card{color:inherit}
+.toc a.card:hover{text-decoration:none}
+.toc .num{font-family:'STIX Two Text',serif;font-style:italic;font-size:1.4rem;color:var(--fit);margin-bottom:6px}
+.toc h3{font-size:1.3rem;margin-bottom:8px}
+.toc p{font-size:.93rem;color:var(--ink-2)}
+.toc .go{font-family:'IBM Plex Mono',monospace;font-size:.76rem;color:var(--fit-ink);margin-top:16px}
+
+.flagship{background:var(--ink);color:#E4EAF2;border-radius:var(--r);padding:36px 38px;display:grid;grid-template-columns:1.25fr .75fr;gap:36px;margin-bottom:22px;position:relative;overflow:hidden}
+.flagship::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:46px 46px}
+.flagship>*{position:relative}
+.flagship h3{color:#fff;font-size:1.5rem;margin:10px 0 12px}
+.flagship p{color:#B4C1D2;font-size:.96rem}
+.flag-auth{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:#7E90A7;margin-top:10px}
+.flag-fig{align-self:center}
+.flag-fig svg{width:100%;display:block}
+.flag-cap{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:#7E90A7;margin-top:8px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 22px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(19,26,36,.09);border-color:#D6D9DE}
+.card h3{font-size:1.1rem;margin-bottom:10px}
+.card p{font-size:.92rem;color:var(--ink-2);flex:1}
+.card .auth{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--steel);margin-top:10px}
+.status{display:inline-flex;align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:99px;margin-bottom:14px}
+.st-prep{background:var(--fit-soft);color:var(--fit-ink)}
+.st-pub{background:#EAF3ED;color:#24663F}
+.chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--steel);border:1px solid var(--line);border-radius:6px;padding:2px 8px;background:var(--paper)}
+.flagship .chip{background:transparent;border-color:#3B4D63;color:#9FB0C4}
+.flagship .status{background:rgba(193,54,43,.18);color:#F0B7B1}
+.pubs{margin-top:22px}
+.pub{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:20px 26px;display:flex;gap:20px;align-items:baseline}
+.pub .yr{font-family:'STIX Two Text',serif;font-style:italic;color:var(--gold);font-size:1.05rem;white-space:nowrap}
+.pub p{font-size:.93rem;color:var(--ink-2)}
+.pub .me{font-weight:600;color:var(--ink)}
+
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.tab{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.04em;padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer;transition:all .16s ease}
+.tab:hover{border-color:#C9CDD3;transform:translateY(-1px)}
+.tab.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.tab .n{color:var(--fit);margin-left:6px}
+.tab.active .n{color:#F0B7B1}
+.proj{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.proj .card.hide{display:none}
+.proj .card h3 a{color:var(--ink)}
+.proj .card h3 a:hover{color:var(--fit-ink);text-decoration:none}
+.proj .card h3 a::after{content:"\2197";font-size:.75em;color:var(--fit);margin-left:6px}
+.cat{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fit-ink);margin-bottom:8px}
+
+.identity{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--fit);border-radius:var(--r);padding:34px 38px;margin-bottom:44px}
+.identity .lab{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fit-ink);display:block;margin-bottom:10px}
+.identity p{font-family:'STIX Two Text',serif;font-size:1.22rem;line-height:1.6;color:var(--ink)}
+.identity p em{color:var(--fit-ink)}
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.mcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 26px}
+.mcard .k{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fit-ink);display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.mcard .k::after{content:"";flex:1;height:1px;background:var(--line)}
+.mcard p{font-size:.92rem;color:var(--ink-2)}
+.areas{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.area{font-family:'IBM Plex Mono',monospace;font-size:.76rem;color:var(--ink-2);border:1px solid var(--line);background:var(--card);border-radius:99px;padding:6px 14px}
+
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;padding:0 0 34px 22px}
+.tl-item::before{content:"";position:absolute;left:-34px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--fit)}
+.tl-item.edu::before{border-color:var(--gold)}
+.tl-item .when{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);margin-bottom:4px}
+.tl-item .when b{color:var(--fit-ink);font-weight:500}
+.tl-item h3{font-size:1.14rem;margin-bottom:2px}
+.tl-item .org{font-family:'STIX Two Text',serif;font-style:italic;color:var(--steel);margin-bottom:10px}
+.tl-item ul{list-style:none;display:grid;gap:7px}
+.tl-item ul li{font-size:.92rem;color:var(--ink-2);padding-left:18px;position:relative}
+.tl-item ul li::before{content:"\2014";position:absolute;left:0;color:var(--fit)}
+.tl-item .hl{color:var(--ink);font-weight:600}
+.tl-award{background:var(--fit-soft);border:1px solid #F0D8D5;border-radius:10px;padding:12px 18px;font-size:.88rem;color:var(--fit-ink);display:inline-block;margin-top:4px}
+.tl-award b{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:2px}
+
+.contact-box{background:var(--ink);color:#DCE4EE;border-radius:var(--r);padding:56px 52px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;position:relative;overflow:hidden}
+.contact-box::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:46px 46px}
+.contact-box>*{position:relative}
+.contact-box h2{color:#fff;font-size:2rem;margin-bottom:14px}
+.contact-box h2 em{font-style:italic;color:#F0B7B1}
+.contact-box p{color:#AEBDCF;font-size:.97rem;max-width:30rem}
+.clist{list-style:none;display:grid;gap:16px;align-content:center}
+.clist a{color:#F0B7B1}
+.clist .k{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#7E90A7;display:block;margin-bottom:2px}
+
+footer{padding:36px 0 46px;color:var(--steel);font-size:.84rem}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer a{color:var(--steel)}
+footer a:hover{color:var(--ink)}
+footer .fn{font-family:'STIX Two Text',serif;font-style:italic}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;padding:60px 0 56px;gap:40px}
+  .stats .wrap{grid-template-columns:repeat(2,1fr)}
+  .stat{border-left:0;padding:18px 6px}
+  .cards,.proj,.toc{grid-template-columns:1fr}
+  .flagship,.methods,.contact-box{grid-template-columns:1fr}
+  .contact-box{padding:38px 28px}
+  nav ul{position:absolute;top:62px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:10px 18px 16px;display:none}
+  nav ul.open{display:flex}
+  .menu-btn{display:block}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="brand" href="index.html">Stefan A. <em>Mills</em></a><button class="menu-btn" id="menu" aria-label="Toggle menu">menu</button><ul id="navlinks"><li><a href="index.html">Home</a></li><li><a href="research.html">Research</a></li><li><a href="projects.html" class="on">Projects</a></li><li><a href="methods.html">Methods</a></li><li><a href="background.html">Background</a></li><li><a href="contact.html">Contact</a></li><li><a class="nav-cv" href="https://drive.google.com/file/d/1VxBTARcS7PneIp0Kzqu2hkIVJAiAmIVM/view?usp=sharing" target="_blank" rel="noopener">CV &#8599;</a></li></ul></div><div id="bar"></div></nav>
+<div class="banner"><div class="wrap"><p class="crumb">Stefan A. Mills &middot; Portfolio</p><h1><span class="n">&sect;2</span>Applied &amp; Data Projects</h1><p class="tag">Shipped, documented, and public &mdash; filter by what you care about.</p></div></div>
+<section>
+  <div class="wrap">
+    <div class="tabs rv" role="tablist" aria-label="Filter projects by category">
+      <button class="tab active" data-f="all">all<span class="n" id="n-all"></span></button>
+      <button class="tab" data-f="ml">machine_learning<span class="n" id="n-ml"></span></button>
+      <button class="tab" data-f="dl">deep_learning &amp; nlp<span class="n" id="n-dl"></span></button>
+      <button class="tab" data-f="sql">sql<span class="n" id="n-sql"></span></button>
+      <button class="tab" data-f="bi">bi &amp; visualization<span class="n" id="n-bi"></span></button>
+      <button class="tab" data-f="py">python &amp; eda<span class="n" id="n-py"></span></button>
+    </div>
+
+    <div class="proj" id="projgrid">
+      <article class="card rv" data-cat="dl ml">
+        <div class="cat">deep_learning &middot; nlp</div>
+        <h3><a href="https://github.com/stefanmills" target="_blank" rel="noopener">AI-Generated Text Detection Ensemble</a></h3>
+        <p>Research-grade pipeline: fine-tuned RoBERTa + DetectGPT + GPTZero with Monte Carlo dropout for uncertainty, run over millions of social media records. Core engine of the Synthetic Noise study.</p>
+        <div class="chips"><span class="chip">PyTorch</span><span class="chip">Transformers</span><span class="chip">MC dropout</span></div>
+      </article>
+      <article class="card rv" data-cat="ml dl">
+        <div class="cat">machine_learning &middot; healthcare</div>
+        <h3><a href="https://github.com/stefanmills" target="_blank" rel="noopener">ADRD Risk Dashboard with SHAP</a></h3>
+        <p>Clinical decision-support prototype for early Alzheimer's and dementia risk &mdash; XGBoost model with SHAP explanations, confidence scores, and what-if scenarios in an interactive Dash app.</p>
+        <div class="chips"><span class="chip">XGBoost</span><span class="chip">SHAP</span><span class="chip">Dash</span></div>
+      </article>
+      <article class="card rv" data-cat="ml">
+        <div class="cat">machine_learning</div>
+        <h3><a href="https://github.com/stefanmills/blossomstreamlit" target="_blank" rel="noopener">Loan Default Prediction</a></h3>
+        <p>End-to-end ML pipeline &mdash; cleaning through modeling to a Streamlit deployment &mdash; predicting loan defaults for SPJ Savings &amp; Loans to support fairer lending decisions.</p>
+        <div class="chips"><span class="chip">scikit-learn</span><span class="chip">Streamlit</span></div>
+      </article>
+      <article class="card rv" data-cat="py">
+        <div class="cat">python &middot; eda</div>
+        <h3><a href="https://github.com/stefanmills/FIFA-21-Dataset-EDA-and-Visualization/tree/main" target="_blank" rel="noopener">FIFA 21 Cleaning &amp; EDA</a></h3>
+        <p>A documented walkthrough of taming a messy real-world dataset: inconsistencies, feature engineering, and visual exploration in Python.</p>
+        <div class="chips"><span class="chip">Pandas</span><span class="chip">EDA</span></div>
+      </article>
+      <article class="card rv" data-cat="bi py">
+        <div class="cat">bi &amp; visualization</div>
+        <h3><a href="https://github.com/stefanmills/London-Bike-Ride-Dashboard-Analysis" target="_blank" rel="noopener">London Bike Rides</a></h3>
+        <p>Urban-mobility analysis of London's bike-share data &mdash; Python for ingestion and wrangling, Tableau for the interactive visual layer.</p>
+        <div class="chips"><span class="chip">Tableau</span><span class="chip">Kaggle API</span></div>
+      </article>
+      <article class="card rv" data-cat="bi">
+        <div class="cat">bi &amp; visualization</div>
+        <h3><a href="https://github.com/stefanmills/-Housing-Sales-Visualization-Project-Tableau" target="_blank" rel="noopener">King County Real Estate</a></h3>
+        <p>Housing-market visualization of King County sales (2014&ndash;2015): trends, price distributions, and geographic hotspots in Tableau.</p>
+        <div class="chips"><span class="chip">Tableau</span><span class="chip">Geo analysis</span></div>
+      </article>
+      <article class="card rv" data-cat="bi py">
+        <div class="cat">bi &amp; visualization</div>
+        <h3><a href="https://github.com/stefanmills/Educative-Courses-Analysis-and-Visualization--Python-CRISP-DM/tree/main" target="_blank" rel="noopener">Educative Courses (CRISP-DM)</a></h3>
+        <p>Course-catalog analysis following CRISP-DM end to end &mdash; cleaned in Python/Excel, reported in Power BI.</p>
+        <div class="chips"><span class="chip">CRISP-DM</span><span class="chip">Power BI</span></div>
+      </article>
+      <article class="card rv" data-cat="sql">
+        <div class="cat">sql</div>
+        <h3><a href="https://github.com/stefanmills/DataDig_2015-NFL-Draft-Super-Bowl-Data" target="_blank" rel="noopener">NFL Draft &amp; Super Bowl SQL</a></h3>
+        <p>Advanced SQL joining the 2015 NFL Draft with Super Bowl winners 1967&ndash;2020 &mdash; database design, cleaning, multi-table querying.</p>
+        <div class="chips"><span class="chip">SQL</span><span class="chip">DB design</span></div>
+      </article>
+      <article class="card rv" data-cat="bi">
+        <div class="cat">bi &amp; visualization</div>
+        <h3><a href="https://github.com/stefanmills/Data-Professional-Survey-Project-PowerBi" target="_blank" rel="noopener">Data Professionals Survey</a></h3>
+        <p>Survey of data careers &mdash; roles, salaries, paths &mdash; cleaned and distilled into a focused Power BI dashboard of key trends.</p>
+        <div class="chips"><span class="chip">Power BI</span><span class="chip">Dashboarding</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+<div class="wrap"><div class="pagenav"><a href="research.html">&larr; Research</a><a href="methods.html">Methods &rarr;</a></div></div>
+<footer><div class="wrap"><span class="fn">&copy; 2026 Stefan Ameyaw Mills &mdash; typeset like a paper, on purpose.</span><span><a href="https://github.com/stefanmills" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://www.linkedin.com/in/stefan-mills/" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="https://twitter.com/jmills_gh" target="_blank" rel="noopener">Twitter</a></span></div></footer>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  if(bar){addEventListener('scroll',function(){
+    var h=document.documentElement;
+    bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  },{passive:true});}
+  var mb=document.getElementById('menu');
+  if(mb){mb.addEventListener('click',function(){document.getElementById('navlinks').classList.toggle('open');});}
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.rv');
+  if(rm||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  els.forEach(function(e){io.observe(e);});
+})();
+
+(function(){
+  var tabs=document.querySelectorAll('.tab');if(!tabs.length)return;
+  var cards=document.querySelectorAll('#projgrid .card');
+  var counts={all:cards.length};
+  cards.forEach(function(c){c.dataset.cat.split(' ').forEach(function(k){counts[k]=(counts[k]||0)+1;});});
+  for(var k in counts){var el=document.getElementById('n-'+k);if(el)el.textContent='('+counts[k]+')';}
+  tabs.forEach(function(t){t.addEventListener('click',function(){
+    tabs.forEach(function(x){x.classList.remove('active');});
+    t.classList.add('active');
+    var f=t.dataset.f;
+    cards.forEach(function(c){
+      var show=f==='all'||c.dataset.cat.split(' ').indexOf(f)>-1;
+      c.classList.toggle('hide',!show);
+    });
+  });});
+})();
+</script>
+</body>
+</html>
