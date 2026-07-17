@@ -188,6 +188,15 @@ section{padding:74px 0 26px}
 .clist a{color:#F0B7B1}
 .clist .k{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#7E90A7;display:block;margin-bottom:2px}
 
+/* CV mode toggle */
+.cvtoggle{display:inline-flex;border:1px solid var(--line);border-radius:99px;background:var(--card);padding:3px;gap:2px;vertical-align:middle}
+.cvtoggle button{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;padding:6px 14px;border:0;border-radius:99px;background:transparent;color:var(--steel);cursor:pointer;transition:all .15s ease}
+.cvtoggle button.on{background:var(--ink);color:#fff}
+.hero .cvtoggle,.contact-box .cvtoggle{border-color:#3B4D63;background:rgba(255,255,255,.04)}
+.hero .cvtoggle button,.contact-box .cvtoggle button{color:#93A5BB}
+.hero .cvtoggle button.on,.contact-box .cvtoggle button.on{background:var(--fit);color:#fff}
+.cvhint{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--steel)}
+
 footer{padding:36px 0 46px;color:var(--steel);font-size:.84rem}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 footer a{color:var(--steel)}
@@ -208,7 +217,7 @@ footer .fn{font-family:'STIX Two Text',serif;font-style:italic}
 </style>
 </head>
 <body>
-<nav><div class="wrap"><a class="brand" href="index.html">Stefan A. <em>Mills</em></a><button class="menu-btn" id="menu" aria-label="Toggle menu">menu</button><ul id="navlinks"><li><a href="index.html">Home</a></li><li><a href="research.html">Research</a></li><li><a href="projects.html" class="on">Projects</a></li><li><a href="methods.html">Methods</a></li><li><a href="background.html">Background</a></li><li><a href="contact.html">Contact</a></li><li><a class="nav-cv" href="https://drive.google.com/file/d/1VxBTARcS7PneIp0Kzqu2hkIVJAiAmIVM/view?usp=sharing" target="_blank" rel="noopener">CV &#8599;</a></li></ul></div><div id="bar"></div></nav>
+<nav><div class="wrap"><a class="brand" href="index.html">Stefan A. <em>Mills</em></a><button class="menu-btn" id="menu" aria-label="Toggle menu">menu</button><ul id="navlinks"><li><a href="index.html">Home</a></li><li><a href="research.html">Research</a></li><li><a href="projects.html" class="on">Projects</a></li><li><a href="methods.html">Methods</a></li><li><a href="background.html">Background</a></li><li><a href="contact.html">Contact</a></li><li><a class="nav-cv cvlink" href="cv-academic.pdf" target="_blank" rel="noopener">CV &#8599;</a></li></ul></div><div id="bar"></div></nav>
 <div class="banner"><div class="wrap"><p class="crumb">Stefan A. Mills &middot; Portfolio</p><h1><span class="n">&sect;2</span>Applied &amp; Data Projects</h1><p class="tag">Shipped, documented, and public &mdash; filter by what you care about.</p></div></div>
 <section>
   <div class="wrap">
@@ -282,6 +291,27 @@ footer .fn{font-family:'STIX Two Text',serif;font-style:italic}
 <div class="wrap"><div class="pagenav"><a href="research.html">&larr; Research</a><a href="methods.html">Methods &rarr;</a></div></div>
 <footer><div class="wrap"><span class="fn">&copy; 2026 Stefan Ameyaw Mills </span><span><a href="https://github.com/stefanmills" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://www.linkedin.com/in/stefanmills/" target="_blank" rel="noopener">LinkedIn</a> </span></div></footer>
 <script>
+/* ---- CV mode toggle: academic <-> industry ---- */
+(function(){
+  var CV={
+    academic:{url:'cv-academic.pdf',label:'Academic CV'},
+    industry:{url:'cv-industry.pdf',label:'Industry r\u00e9sum\u00e9'}
+  };
+  function setMode(mode){
+    document.querySelectorAll('.cvlink').forEach(function(a){
+      a.href=CV[mode].url;
+      if(a.dataset.dyn)a.textContent=CV[mode].label+' \u2197';
+    });
+    document.querySelectorAll('.cvtoggle button').forEach(function(b){
+      b.classList.toggle('on',b.dataset.mode===mode);
+      b.setAttribute('aria-pressed',b.dataset.mode===mode?'true':'false');
+    });
+  }
+  document.querySelectorAll('.cvtoggle button').forEach(function(b){
+    b.addEventListener('click',function(){setMode(b.dataset.mode);});
+  });
+  if(document.querySelector('.cvtoggle'))setMode('academic');
+})();
 (function(){
   var bar=document.getElementById('bar');
   if(bar){addEventListener('scroll',function(){
